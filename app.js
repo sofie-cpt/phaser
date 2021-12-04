@@ -12,7 +12,7 @@ game.load.spritesheet('baddie','assets/baddie.png', 32, 32);
 }
 function create (){
     game.physics.startSystem(Phaser.Physics.Arcade);
-}
+
 //create the sky 
 game.add.sprite(0,0, 'sky');
 platforms = game.add.physicsGroup();
@@ -41,7 +41,7 @@ lifetext = game.add.text (120, 5, life,style);
 lifelabel.setShadow(3,3,'rgba(0,0,0,0.5',2);
 lifetext.setShadow(3,3,'rgba(0,0,0,0.5',2);
 
-
 function update (){
 
+}
 }
