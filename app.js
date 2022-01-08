@@ -54,5 +54,30 @@ player = game.add.sprite(32, 400, 'dude');
 }
 
 function update(){
+	game.physics.arcade.collide(player, platforms);
+	game.physics.arcade.collide(stars, platforms);
+	game.physics.arcade.collide(enemy1, platforms);
 
-}
+//reset the players velocity if no events
+	player.body.velocity.x = 0;
+
+//player movement by keys 
+	if (cursors.left.isDown){
+	//move left 
+		player.body.velocity.x = -150;
+		player.animations.play('left');
+	} else if(cursors.right.isDown){
+	//move right 
+	player.body.velocity.x = 150;
+	player.animations.play('right');
+	} else {
+	player.animations.stop();
+	player.frame = 4;
+
+	}
+//allow the player to jump if touching the ground 
+	if(cursors.up.isDown && player.body.touching.down){
+	player.body.velocity.y = -300;
+	}
+
+	}
