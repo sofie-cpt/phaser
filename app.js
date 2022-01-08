@@ -68,16 +68,16 @@ function update(){
 		player.animations.play('left');
 	} else if(cursors.right.isDown){
 	//move right 
-	player.body.velocity.x = 150;
-	player.animations.play('right');
+		player.body.velocity.x = 150;
+		player.animations.play('right');
 	} else {
-	player.animations.stop();
-	player.frame = 4;
+		player.animations.stop();
+		player.frame = 4;
 
 	}
 //allow the player to jump if touching the ground 
 	if(cursors.up.isDown && player.body.touching.down){
-	player.body.velocity.y = -300;
+		player.body.velocity.y = -300;
 	}
 
 	}
