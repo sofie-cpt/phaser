@@ -55,7 +55,7 @@ player = game.add.sprite(32, 400, 'dude');
 
 function update(){
 	game.physics.arcade.collide(player, platforms);
-	game.physics.arcade.collide(stars, platforms);
+	game.physics.arcade.collide(star, platforms);
 	game.physics.arcade.collide(enemy1, platforms);
 
 //reset the players velocity if no events
