@@ -76,6 +76,7 @@ function create(){
 	cursors = game.input.keyboard.createCursorKeys();
 
 }
+ 
 
 function update(){
 	game.physics.arcade.collide(player, platforms);
@@ -104,4 +105,61 @@ function update(){
 		player.body.velocity.y = -300;
 	}
 
+	game.physics.arcade.overlap(player, stars, collectStar);
+	game.physics.arcade.overlap(player, enemy1, loseLife);
+
+	//define collectStar function
+function collectStar(player,star){
+	//update score variable
+	score =score +1;
+	//reflect in text
+	scoretext.setText(score);
+
+	//remove the star and reset to the top
+	star.kill();
+	star.reset(Math.floor(Math.random()*750),0)
+}
+
+//define loseLife
+function loseLife(player, enemy){
+	//lose life
+	life -= 1;
+	lifetext.setText(life);
+
+	enemy.kill();
+	enemy.reset(10, 20);
+}
+
+function moveEnemy(){
+	//Enemy AI
+	if(enemy1.x > 759){
+		enemy1.animations.play('left');
+		enemy1.body.velocity.x = -120;
+	}else if(enemy1.x < 405){
+		enemy1.animations.play('right');
+		enemy1.body.velocity.x = 120;
 	}
+}
+
+function endGame(){
+  player.kill();
+  scorelabel.text="GAME OVER! You scored " + score;
+  scoretext.visible = false;
+  lifelabel.visible = false;
+  lifetext.visible = false;
+}
+
+
+
+	moveEnemy();
+
+if(life <0){
+	endGame();
+}
+	}
+	
+
+
+
+
+
